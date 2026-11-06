@@ -1,0 +1,18 @@
+services:
+  shop:
+    build: .
+    container_name: online-shopping-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - shop-data:/app/data
+    environment:
+      - SESSION_SECRET=change-this-secret
+  selenium:
+    image: selenium/standalone-chrome:latest
+    shm_size: 2gb
+    depends_on:
+      - shop
+    profiles: ["test"]
+volumes:
+  shop-data:

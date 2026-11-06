@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: online-shopping
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: online-shopping
+  template:
+    metadata:
+      labels:
+        app: online-shopping
+    spec:
+      containers:
+        - name: online-shopping
+          image: online-shopping-system:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"
+            - name: SESSION_SECRET
+              value: "change-this-secret"
+          volumeMounts:
+            - name: shop-data
+              mountPath: /app/data
+      volumes:
+        - name: shop-data
+          emptyDir: {}

@@ -1,0 +1,20 @@
+{
+  "name": "online-shopping-order-management",
+  "version": "1.0.0",
+  "description": "Online Shopping and Order Management System with Git, Jenkins, Docker, Kubernetes and Selenium",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test",
+    "test:selenium": "node --test selenium-tests/*.test.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1"
+  },
+  "devDependencies": {
+    "selenium-webdriver": "^4.27.0"
+  }
+}
